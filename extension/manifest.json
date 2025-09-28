@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Page Recorder Detector",
+  "description": "Detects in-page screen/camera/audio recording and exposes a global hook window.__PAGE_RECORDING_HOOK__",
+  "version": "1.0.0",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Page Recorder Detector",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
